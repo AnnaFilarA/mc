@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block title %}Выбор роли{% endblock %}
+{% block content %}
+<h1>Кто вы?</h1>
+<p class="lead">Выберите роль. Её можно сменить в любой момент в шапке страницы.</p>
+<div class="role-grid">
+  <a class="role-card" href="/role/manager" id="role-manager">
+    <span class="role-ico">М</span>
+    <span class="role-name">Я менеджер по качеству</span>
+    <span class="role-desc">Исключения, решения по полям, утверждение новых категорий</span>
+  </a>
+  <a class="role-card" href="/role/seller" id="role-seller">
+    <span class="role-ico">П</span>
+    <span class="role-name">Я продавец</span>
+    <span class="role-desc">Предзаполнение характеристик при создании карточки, ответы на вопросы каталога</span>
+  </a>
+</div>
+{% endblock %}

@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block title %}Мои товары{% endblock %}
+{% block content %}
+<div class="row-between">
+  <h1>Мои товары</h1>
+  <a class="btn primary" href="/seller/new">Новая карточка</a>
+</div>
+{% if saved %}<div class="notice ok" id="saved-notice">Карточка {{ saved }} сохранена и проверена.</div>{% endif %}
+<div class="table-wrap">
+<table class="tbl" id="my-products">
+  <thead><tr><th>Товар</th><th>Категория</th><th>Статус</th><th>Что уточнить</th></tr></thead>
+  <tbody>
+  {% for v in views %}
+    <tr data-pid="{{ v.product_id }}">
+      <td><b>{{ v.card.title or v.product_id }}</b><div class="muted small">{{ v.product_id }}{% if v.owner == 'seller' %} · создана вами{% endif %}</div></td>
+      <td>{{ v.category_name }}</td>
+      <td><span class="chip cs-{{ v.card_status }}">{{ CARD_STATUS_LABELS[v.card_status] }}</span></td>
+      <td>
+        {% if v.questions %}
+          <a class="badge warn" href="/seller/questions">нужно уточнить {{ v.questions|length }} {{ 'поле' if v.questions|length == 1 else ('поля' if v.questions|length < 5 else 'полей') }}</a>
+        {% else %}
+          <span class="muted">всё заполнено</span>
+        {% endif %}
+      </td>
+    </tr>
+  {% endfor %}
+  </tbody>
+</table>
+</div>
+{% endblock %}

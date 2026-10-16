@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% import "_macros.html" as m %}
+{% block title %}Кабинет менеджера{% endblock %}
+{% block content %}
+<h1>Кабинет менеджера по качеству</h1>
+
+<section class="tiles" aria-label="Сводка">
+  <div class="tile"><div class="tile-n" id="sum-checked">{{ summary.checked }}</div><div class="tile-l">Проверено карточек</div></div>
+  <div class="tile"><div class="tile-n ok">{{ summary.auto_fixed }}</div><div class="tile-l">Исправлено автоматически (полей)</div></div>
+  <div class="tile"><div class="tile-n warn" id="sum-manager">{{ summary.wait_manager }}</div><div class="tile-l">Ждут менеджера</div></div>
+  <div class="tile"><div class="tile-n bad" id="sum-seller">{{ summary.wait_seller }}</div><div class="tile-l">Ждут продавца</div></div>
+  <div class="tile"><div class="tile-n">{{ summary.llm_share }}%</div><div class="tile-l">Доля карточек с LLM</div></div>
+</section>
+
+<h2>Исключения <span class="count">{{ views|length }}</span></h2>
+{% if views %}
+<div class="table-wrap">
+<table class="tbl" id="exceptions">
+  <thead><tr><th>Товар</th><th>Категория</th><th>Проблемные поля</th><th>Мин. уверенность</th><th>Запрос продавцу</th><th></th></tr></thead>
+  <tbody>
+  {% for v in views %}
+    <tr data-pid="{{ v.product_id }}">
+      <td><a href="/manager/card/{{ v.product_id }}" class="strong">{{ v.card.title or v.product_id }}</a><div class="muted small">{{ v.product_id }} · {{ m.cardchip(v.card_status) }}</div></td>
+      <td>{{ v.category_name }}</td>
+      <td>{% for a in v.problems %}<span class="chip st-{{ a.res.status.value }}" title="{{ STATUS_LABELS[a.res.status.value] }}">{{ a.spec.name_ru }}</span> {% else %}<span class="muted">—</span>{% endfor %}</td>
+      <td>{{ v.min_conf|pct }}</td>
+      <td>{% if v.request_state %}<span class="req">{{ v.request_state }}</span><div class="muted small">{{ v.request_at|fmt_dt }}</div>{% else %}<span class="muted">—</span>{% endif %}</td>
+      <td><a class="btn small-btn" href="/manager/card/{{ v.product_id }}">Открыть</a></td>
+    </tr>
+  {% endfor %}
+  </tbody>
+</table>
+</div>
+{% else %}
+<div class="notice ok" id="no-exceptions">Исключений нет: все карточки готовы.</div>
+{% endif %}
+
+<h2>Ответы продавцов</h2>
+{% if answers %}
+<ul class="plain" id="answers">
+  {% for v, a in answers %}
+  <li><span class="req req-done">Ответ получен</span>
+    <a href="/manager/card/{{ v.product_id }}">{{ v.card.title or v.product_id }}</a>:
+    {{ a.spec.name_ru }} = <b>{{ a.res.value|fmt_value(a.res.unit) }}</b>
+    <span class="muted small">· {{ a.answered_at|fmt_dt }} · карточка: {{ CARD_STATUS_LABELS[v.card_status]|lower }}</span></li>
+  {% endfor %}
+</ul>
+{% else %}
+<p class="muted">Пока нет ответов от продавцов.</p>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block title %}{{ v.card.title or v.product_id }}{% endblock %}
+{% block content %}
+<p class="crumbs"><a href="/manager">← Исключения</a></p>
+<h1>{{ v.card.title or v.product_id }}</h1>
+<p class="muted">Товар {{ v.product_id }} · категория: {{ v.category_name }} (уверенность {{ v.base.category_confidence|pct }}) · LLM-вызовов: {{ v.base.llm_calls }} · {{ v.base.elapsed_ms }} мс</p>
+
+<div class="split">
+  <section class="src" aria-label="Исходный текст">
+    <h2>Исходный текст</h2>
+    {% for b in source_blocks %}
+    <div class="src-block">
+      <div class="src-label">{{ b.label }}</div>
+      <div class="src-text">{% for s in b.segments %}{% if s.mark %}<mark class="ev st-{{ s.status }}" title="{{ s.mark }}">{{ s.text }}</mark>{% else %}{{ s.text }}{% endif %}{% endfor %}</div>
+    </div>
+    {% endfor %}
+    <p class="muted small">Подсвечены фрагменты, на которые опирается предложенное значение.</p>
+  </section>
+  <section class="fieldsec" aria-label="Атрибуты">
+    <h2>Атрибуты</h2>
+    {% include "_card_panel.html" %}
+  </section>
+</div>
+{% endblock %}

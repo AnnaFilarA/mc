@@ -1,0 +1,7 @@
+{# Статус цветом и словом (SPEC 4.1) #}
+{% macro chip(status) -%}
+<span class="chip st-{{ status }}">{{ STATUS_LABELS[status] }}</span>
+{%- endmacro %}
+{% macro cardchip(status) -%}
+<span class="chip cs-{{ status }}">{{ CARD_STATUS_LABELS[status] }}</span>
+{%- endmacro %}
