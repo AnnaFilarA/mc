@@ -1,0 +1,28 @@
+{
+  "note": "ловушка: «81 см» — не дюймы; 1366x768 → HD",
+  "card": {
+    "product_id": "t03",
+    "title": "Телевизор Xiaomi TV A 32 2025 HD",
+    "description": "Диагональ 32\" (81 см), разрешение 1366x768, Google TV.",
+    "seller_attributes": {},
+    "category_hint": "tvs"
+  },
+  "expected": {
+    "category": "tvs",
+    "attributes": {
+      "brand": {
+        "value": "Xiaomi",
+        "status": "proposed"
+      },
+      "screen_size": {
+        "value": "32",
+        "unit": "inch",
+        "status": "proposed"
+      },
+      "resolution": {
+        "value": "HD",
+        "status": "proposed"
+      }
+    }
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "note": "8/256GB в названии, Android и диагональ в описании",
+  "card": {
+    "product_id": "s01",
+    "title": "Смартфон Samsung Galaxy A55 8/256GB синий",
+    "description": "Экран 6,6 дюйма Super AMOLED, Android 14.",
+    "seller_attributes": {}
+  },
+  "expected": {
+    "category": "smartphones",
+    "attributes": {
+      "brand": {
+        "value": "Samsung",
+        "status": "proposed"
+      },
+      "color": {
+        "value": "Синий",
+        "status": "proposed"
+      },
+      "ram": {
+        "value": "8",
+        "unit": "GB",
+        "status": "proposed"
+      },
+      "storage": {
+        "value": "256",
+        "unit": "GB",
+        "status": "proposed"
+      },
+      "screen_size": {
+        "value": "6.6",
+        "unit": "inch",
+        "status": "proposed"
+      },
+      "os": {
+        "value": "Android",
+        "status": "proposed"
+      }
+    },
+    "card_status": "ready"
+  }
+}

@@ -1,0 +1,35 @@
+# Схема категории «Наушники». Черновик до EDA. Владелец после EDA — поток A.
+category: headphones
+name_ru: Наушники
+keywords: [наушники, гарнитура, headphones, earbuds, airpods, buds]
+attributes:
+  - code: brand
+    name_ru: Бренд
+    type: enum
+    required: true
+    seller_keys: [brand, бренд, производитель, марка]
+    values: [Apple, Samsung, Sony, JBL, Sennheiser, Bose, Marshall, Jabra, Xiaomi, Huawei, Honor, Audio-Technica]
+  - code: color
+    name_ru: Цвет
+    type: enum
+    required: true
+    seller_keys: [color, цвет, цвет корпуса]
+    values: [Черный, Белый, Серый, Серебристый, Синий, Голубой, Зеленый, Красный, Золотой, Розовый, Фиолетовый, Бежевый, Желтый]
+  - code: connection
+    name_ru: Тип подключения
+    type: enum
+    required: true
+    seller_keys: [connection, подключение, тип подключения]
+    values: [Беспроводные, Проводные]
+  - code: form_factor
+    name_ru: Конструкция
+    type: enum
+    required: true
+    seller_keys: [form_factor, тип, конструкция, тип наушников]
+    values: [Вкладыши, Внутриканальные, Накладные, Полноразмерные]
+  - code: anc
+    name_ru: Активное шумоподавление
+    type: enum
+    required: false
+    seller_keys: [anc, шумоподавление, активное шумоподавление]
+    values: [Да, Нет]

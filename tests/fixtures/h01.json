@@ -1,0 +1,35 @@
+{
+  "note": "AirPods: беспроводные, внутриканальные, ANC",
+  "card": {
+    "product_id": "h01",
+    "title": "Беспроводные наушники Apple AirPods Pro 2 белые",
+    "description": "Активное шумоподавление, внутриканальные амбушюры.",
+    "seller_attributes": {}
+  },
+  "expected": {
+    "category": "headphones",
+    "attributes": {
+      "brand": {
+        "value": "Apple",
+        "status": "proposed"
+      },
+      "color": {
+        "value": "Белый",
+        "status": "proposed"
+      },
+      "connection": {
+        "value": "Беспроводные",
+        "status": "proposed"
+      },
+      "form_factor": {
+        "value": "Внутриканальные",
+        "status": "proposed"
+      },
+      "anc": {
+        "value": "Да",
+        "status": "proposed"
+      }
+    },
+    "card_status": "ready"
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "note": "конфликт ОЗУ: продавец 8 ГБ, название 16GB",
+  "card": {
+    "product_id": "l05",
+    "title": "Ноутбук Acer Aspire 7 16GB/512GB i5",
+    "description": "Экран 15.6 дюйма.",
+    "seller_attributes": {
+      "Оперативная память": "8 ГБ"
+    }
+  },
+  "expected": {
+    "category": "laptops",
+    "attributes": {
+      "brand": {
+        "value": "Acer",
+        "status": "proposed"
+      },
+      "ram": {
+        "status": "conflict"
+      },
+      "storage": {
+        "value": "512",
+        "unit": "GB",
+        "status": "proposed"
+      },
+      "screen_size": {
+        "value": "15.6",
+        "unit": "inch",
+        "status": "proposed"
+      },
+      "cpu": {
+        "value": "Intel Core i5",
+        "status": "proposed"
+      }
+    },
+    "card_status": "needs_seller"
+  }
+}

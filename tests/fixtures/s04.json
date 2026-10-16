@@ -1,0 +1,38 @@
+{
+  "note": "разговорное «16 гигов», бренд в нижнем регистре",
+  "card": {
+    "product_id": "s04",
+    "title": "Смартфон realme GT 6 16 гигов ОЗУ, 512 ГБ памяти",
+    "description": "Цвет: серебристый. Диагональ 6,78\".",
+    "seller_attributes": {}
+  },
+  "expected": {
+    "category": "smartphones",
+    "attributes": {
+      "brand": {
+        "value": "Realme",
+        "status": "proposed"
+      },
+      "color": {
+        "value": "Серебристый",
+        "status": "proposed"
+      },
+      "ram": {
+        "value": "16",
+        "unit": "GB",
+        "status": "proposed"
+      },
+      "storage": {
+        "value": "512",
+        "unit": "GB",
+        "status": "proposed"
+      },
+      "screen_size": {
+        "value": "6.78",
+        "unit": "inch",
+        "status": "proposed"
+      }
+    },
+    "card_status": "ready"
+  }
+}

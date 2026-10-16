@@ -1,0 +1,42 @@
+{
+  "note": "1 ТБ HDD → 1024 GB, HDD",
+  "card": {
+    "product_id": "l06",
+    "title": "Ноутбук Dell Inspiron 3520 Core i7 16 ГБ 1 ТБ HDD 15.6\"",
+    "description": "",
+    "seller_attributes": {}
+  },
+  "expected": {
+    "category": "laptops",
+    "attributes": {
+      "brand": {
+        "value": "Dell",
+        "status": "proposed"
+      },
+      "ram": {
+        "value": "16",
+        "unit": "GB",
+        "status": "proposed"
+      },
+      "storage": {
+        "value": "1024",
+        "unit": "GB",
+        "status": "proposed"
+      },
+      "storage_type": {
+        "value": "HDD",
+        "status": "proposed"
+      },
+      "screen_size": {
+        "value": "15.6",
+        "unit": "inch",
+        "status": "proposed"
+      },
+      "cpu": {
+        "value": "Intel Core i7",
+        "status": "proposed"
+      }
+    },
+    "card_status": "ready"
+  }
+}

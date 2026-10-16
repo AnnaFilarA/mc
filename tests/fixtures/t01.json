@@ -1,0 +1,35 @@
+{
+  "note": "диагональ в дюймах со знаком \", 4K UHD; частоты нет",
+  "card": {
+    "product_id": "t01",
+    "title": "Телевизор Samsung UE55CU7100U 55\" 4K UHD Smart TV",
+    "description": "",
+    "seller_attributes": {}
+  },
+  "expected": {
+    "category": "tvs",
+    "attributes": {
+      "brand": {
+        "value": "Samsung",
+        "status": "proposed"
+      },
+      "screen_size": {
+        "value": "55",
+        "unit": "inch",
+        "status": "proposed"
+      },
+      "resolution": {
+        "value": "4K UHD",
+        "status": "proposed"
+      },
+      "smart_tv": {
+        "value": "Да",
+        "status": "proposed"
+      },
+      "refresh_rate": {
+        "status": "missing"
+      }
+    },
+    "card_status": "ready"
+  }
+}

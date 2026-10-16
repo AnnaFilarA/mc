@@ -1,0 +1,58 @@
+# Схема категории «Ноутбуки». Черновик до EDA. Владелец после EDA — поток A.
+category: laptops
+name_ru: Ноутбуки
+keywords: [ноутбук, laptop, notebook, macbook, ультрабук, thinkpad, vivobook, ideapad]
+attributes:
+  - code: brand
+    name_ru: Бренд
+    type: enum
+    required: true
+    seller_keys: [brand, бренд, производитель, марка]
+    values: [Apple, Lenovo, ASUS, Acer, HP, Dell, MSI, Huawei, Honor, Xiaomi, Gigabyte, Microsoft]
+  - code: color
+    name_ru: Цвет
+    type: enum
+    required: false
+    seller_keys: [color, цвет, цвет корпуса]
+    values: [Черный, Белый, Серый, Серебристый, Синий, Голубой, Зеленый, Красный, Золотой, Розовый, Фиолетовый, Бежевый, Желтый]
+  - code: ram
+    name_ru: Оперативная память
+    type: number
+    unit: GB
+    required: true
+    seller_keys: [ram, озу, оперативная память, объем оперативной памяти]
+    values: [4, 8, 12, 16, 24, 32, 64]
+  - code: storage
+    name_ru: Объем накопителя
+    type: number
+    unit: GB
+    required: true
+    seller_keys: [storage, накопитель, объем накопителя, ssd, hdd, объем ssd]
+    values: [128, 256, 512, 1024, 2048]
+  - code: storage_type
+    name_ru: Тип накопителя
+    type: enum
+    required: false
+    seller_keys: [storage_type, тип накопителя]
+    values: [SSD, HDD, eMMC]
+  - code: screen_size
+    name_ru: Диагональ экрана
+    type: number
+    unit: inch
+    required: true
+    seller_keys: [screen_size, диагональ, диагональ экрана]
+    range: [10.0, 18.5]
+  - code: cpu
+    name_ru: Процессор
+    type: enum
+    required: true
+    seller_keys: [cpu, процессор, модель процессора]
+    values: [Intel Core i3, Intel Core i5, Intel Core i7, Intel Core i9, Intel Core Ultra 5, Intel Core Ultra 7,
+             Intel Celeron, Intel Pentium, AMD Ryzen 3, AMD Ryzen 5, AMD Ryzen 7, AMD Ryzen 9,
+             Apple M1, Apple M2, Apple M3, Apple M4]
+  - code: os
+    name_ru: Операционная система
+    type: enum
+    required: false
+    seller_keys: [os, ос, операционная система]
+    values: [Windows 11, Windows 10, macOS, Linux, Без ОС]

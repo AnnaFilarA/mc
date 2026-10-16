@@ -1,0 +1,41 @@
+{
+  "note": "ловушка: «microSD до 1 ТБ» — это не встроенная память; английский цвет",
+  "card": {
+    "product_id": "s05",
+    "title": "Смартфон Tecno Spark 20 4/128GB Gravity Black",
+    "description": "Поддержка карт памяти microSD до 1 ТБ. Экран 6.6 дюйма.",
+    "seller_attributes": {}
+  },
+  "expected": {
+    "category": "smartphones",
+    "attributes": {
+      "brand": {
+        "value": "Tecno",
+        "status": "proposed"
+      },
+      "color": {
+        "value": "Черный",
+        "status": [
+          "proposed",
+          "low_confidence"
+        ]
+      },
+      "ram": {
+        "value": "4",
+        "unit": "GB",
+        "status": "proposed"
+      },
+      "storage": {
+        "value": "128",
+        "unit": "GB",
+        "status": "proposed"
+      },
+      "screen_size": {
+        "value": "6.6",
+        "unit": "inch",
+        "status": "proposed"
+      }
+    },
+    "card_status": "ready"
+  }
+}

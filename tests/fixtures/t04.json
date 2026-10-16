@@ -1,0 +1,37 @@
+{
+  "note": "65'' QLED 4K 144 Гц",
+  "card": {
+    "product_id": "t04",
+    "title": "Телевизор TCL 65C745 65'' QLED 4K 144 Гц Smart TV",
+    "description": "",
+    "seller_attributes": {}
+  },
+  "expected": {
+    "category": "tvs",
+    "attributes": {
+      "brand": {
+        "value": "TCL",
+        "status": "proposed"
+      },
+      "screen_size": {
+        "value": "65",
+        "unit": "inch",
+        "status": "proposed"
+      },
+      "resolution": {
+        "value": "4K UHD",
+        "status": "proposed"
+      },
+      "smart_tv": {
+        "value": "Да",
+        "status": "proposed"
+      },
+      "refresh_rate": {
+        "value": "144",
+        "unit": "Hz",
+        "status": "proposed"
+      }
+    },
+    "card_status": "ready"
+  }
+}

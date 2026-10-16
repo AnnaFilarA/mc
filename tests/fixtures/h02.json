@@ -1,0 +1,35 @@
+{
+  "note": "Bluetooth → Беспроводные",
+  "card": {
+    "product_id": "h02",
+    "title": "Наушники Sony WH-1000XM5 черные",
+    "description": "Bluetooth 5.2, полноразмерные, с активным шумоподавлением.",
+    "seller_attributes": {}
+  },
+  "expected": {
+    "category": "headphones",
+    "attributes": {
+      "brand": {
+        "value": "Sony",
+        "status": "proposed"
+      },
+      "color": {
+        "value": "Черный",
+        "status": "proposed"
+      },
+      "connection": {
+        "value": "Беспроводные",
+        "status": "proposed"
+      },
+      "form_factor": {
+        "value": "Полноразмерные",
+        "status": "proposed"
+      },
+      "anc": {
+        "value": "Да",
+        "status": "proposed"
+      }
+    },
+    "card_status": "ready"
+  }
+}

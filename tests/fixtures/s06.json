@@ -1,0 +1,31 @@
+{
+  "note": "почти пустая карточка: всё missing кроме бренда",
+  "card": {
+    "product_id": "s06",
+    "title": "Смартфон Honor X8b",
+    "description": "Отличный смартфон для повседневных задач.",
+    "seller_attributes": {}
+  },
+  "expected": {
+    "category": "smartphones",
+    "attributes": {
+      "brand": {
+        "value": "Honor",
+        "status": "proposed"
+      },
+      "color": {
+        "status": "missing"
+      },
+      "ram": {
+        "status": "missing"
+      },
+      "storage": {
+        "status": "missing"
+      },
+      "screen_size": {
+        "status": "missing"
+      }
+    },
+    "card_status": "needs_seller"
+  }
+}

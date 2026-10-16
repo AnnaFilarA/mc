@@ -1,0 +1,45 @@
+# Схема категории «Смартфоны». Черновик до EDA (INTENT 10, вопрос 2). Владелец после EDA — поток A.
+# type: enum — значение только из values; number — число + unit (канон: число без единицы, unit отдельно).
+category: smartphones
+name_ru: Смартфоны
+keywords: [смартфон, smartphone, телефон, iphone, galaxy, redmi, pixel]
+attributes:
+  - code: brand
+    name_ru: Бренд
+    type: enum
+    required: true
+    seller_keys: [brand, бренд, производитель, марка]
+    values: [Apple, Samsung, Xiaomi, Huawei, Honor, Realme, Poco, OnePlus, Google, Nokia, Tecno, Infinix]
+  - code: color
+    name_ru: Цвет
+    type: enum
+    required: true
+    seller_keys: [color, цвет, цвет корпуса]
+    values: [Черный, Белый, Серый, Серебристый, Синий, Голубой, Зеленый, Красный, Золотой, Розовый, Фиолетовый, Бежевый, Желтый]
+  - code: ram
+    name_ru: Оперативная память
+    type: number
+    unit: GB
+    required: true
+    seller_keys: [ram, озу, оперативная память, объем оперативной памяти]
+    values: [2, 3, 4, 6, 8, 12, 16, 24]
+  - code: storage
+    name_ru: Встроенная память
+    type: number
+    unit: GB
+    required: true
+    seller_keys: [storage, rom, пзу, встроенная память, объем встроенной памяти, память]
+    values: [32, 64, 128, 256, 512, 1024]
+  - code: screen_size
+    name_ru: Диагональ экрана
+    type: number
+    unit: inch
+    required: true
+    seller_keys: [screen_size, диагональ, диагональ экрана]
+    range: [4.0, 8.0]
+  - code: os
+    name_ru: Операционная система
+    type: enum
+    required: false
+    seller_keys: [os, ос, операционная система]
+    values: [Android, iOS, HarmonyOS]

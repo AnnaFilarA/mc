@@ -1,0 +1,32 @@
+{
+  "note": "конфликт цвета: продавец «Белый», описание «черный»",
+  "card": {
+    "product_id": "h03",
+    "title": "Проводные наушники JBL Tune 110 вкладыши",
+    "description": "Цвет: черный. Кабель 1,2 м.",
+    "seller_attributes": {
+      "Цвет": "Белый"
+    }
+  },
+  "expected": {
+    "category": "headphones",
+    "attributes": {
+      "brand": {
+        "value": "JBL",
+        "status": "proposed"
+      },
+      "color": {
+        "status": "conflict"
+      },
+      "connection": {
+        "value": "Проводные",
+        "status": "proposed"
+      },
+      "form_factor": {
+        "value": "Вкладыши",
+        "status": "proposed"
+      }
+    },
+    "card_status": "needs_seller"
+  }
+}

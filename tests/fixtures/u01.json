@@ -1,0 +1,21 @@
+{
+  "note": "неизвестная категория → маршрут «новая категория», общие атрибуты",
+  "card": {
+    "product_id": "u01",
+    "title": "Робот-пылесос Dreame D10 Plus белый",
+    "description": "Влажная уборка, станция самоочистки.",
+    "seller_attributes": {}
+  },
+  "expected": {
+    "category": "unknown",
+    "attributes": {
+      "color": {
+        "value": "Белый",
+        "status": [
+          "proposed",
+          "low_confidence"
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,17 @@
+__pycache__/
+*.pyc
+.pytest_cache/
+.ipynb_checkpoints/
+.venv/
+# Данные: датасет кейса (~1 ГБ) в git не кладём
+data/raw/*
+!data/raw/.gitkeep
+data/cache/*
+!data/cache/.gitkeep
+data/*.db
+data/feedback/*
+!data/feedback/.gitkeep
+models/*
+!models/.gitkeep
+outputs/predictions.*
+outputs/metrics/prev/

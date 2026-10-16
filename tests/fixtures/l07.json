@@ -1,0 +1,44 @@
+{
+  "note": "ОЗУ нет в тексте → missing",
+  "card": {
+    "product_id": "l07",
+    "title": "Ноутбук MSI Modern 14 C12M",
+    "description": "Процессор Intel Core i5-1235U, SSD 512 ГБ, экран 14 дюймов, черный.",
+    "seller_attributes": {}
+  },
+  "expected": {
+    "category": "laptops",
+    "attributes": {
+      "brand": {
+        "value": "MSI",
+        "status": "proposed"
+      },
+      "color": {
+        "value": "Черный",
+        "status": "proposed"
+      },
+      "ram": {
+        "status": "missing"
+      },
+      "storage": {
+        "value": "512",
+        "unit": "GB",
+        "status": "proposed"
+      },
+      "storage_type": {
+        "value": "SSD",
+        "status": "proposed"
+      },
+      "screen_size": {
+        "value": "14",
+        "unit": "inch",
+        "status": "proposed"
+      },
+      "cpu": {
+        "value": "Intel Core i5",
+        "status": "proposed"
+      }
+    },
+    "card_status": "needs_seller"
+  }
+}

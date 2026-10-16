@@ -1,0 +1,17 @@
+# Python 3.10+ (Colab, локально). Нижние границы — проверено на этих версиях.
+pydantic>=2.6
+PyYAML>=6.0
+pandas>=2.0
+numpy>=1.26
+scikit-learn>=1.4
+catboost>=1.2
+matplotlib>=3.8
+fastapi>=0.110
+uvicorn>=0.29
+jinja2>=3.1
+python-multipart>=0.0.9
+httpx>=0.27
+pytest>=8.0
+nbformat>=5.9
+nbconvert>=7.16
+ipykernel>=6.29

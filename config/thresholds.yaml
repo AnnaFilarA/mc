@@ -1,0 +1,15 @@
+# Пороги уверенности (SPEC F6). Дефолты до калибровки; калибрует поток G на validation (INTENT 5.2).
+# high — порог для proposed/unchanged; low — нижняя граница «уверенного» кандидата для conflict (SPEC 3.4 п.2).
+default:
+  high: 0.80
+  low: 0.50
+attributes: {}
+#  ram: {high: 0.85, low: 0.5}
+# Параметры стоимости порога (INTENT 5.2)
+cost:
+  manager_rate_rub_per_hour: 765
+  minutes_per_field: 0.5
+  error_cost_rub:        # цена ошибки поля по сценариям, пока нет кликов
+    low: 5
+    mid: 20
+    high: 60

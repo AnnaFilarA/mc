@@ -1,0 +1,49 @@
+{
+  "note": "компактная запись через слэш, DOS → Без ОС",
+  "card": {
+    "product_id": "l02",
+    "title": "Ноутбук Lenovo IdeaPad Slim 3 15IRU8 i3-1315U/8Gb/256Gb SSD/15.6\"/DOS",
+    "description": "",
+    "seller_attributes": {}
+  },
+  "expected": {
+    "category": "laptops",
+    "attributes": {
+      "brand": {
+        "value": "Lenovo",
+        "status": "proposed"
+      },
+      "ram": {
+        "value": "8",
+        "unit": "GB",
+        "status": "proposed"
+      },
+      "storage": {
+        "value": "256",
+        "unit": "GB",
+        "status": "proposed"
+      },
+      "storage_type": {
+        "value": "SSD",
+        "status": "proposed"
+      },
+      "screen_size": {
+        "value": "15.6",
+        "unit": "inch",
+        "status": "proposed"
+      },
+      "cpu": {
+        "value": "Intel Core i3",
+        "status": "proposed"
+      },
+      "os": {
+        "value": "Без ОС",
+        "status": [
+          "proposed",
+          "low_confidence"
+        ]
+      }
+    },
+    "card_status": "ready"
+  }
+}

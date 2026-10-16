@@ -1,0 +1,37 @@
+{
+  "note": "Ultra HD → 4K UHD, «43 дюйма», 60 Гц",
+  "card": {
+    "product_id": "t02",
+    "title": "Телевизор LG 43UR78006LK 43 дюйма Ultra HD",
+    "description": "Smart TV на webOS, частота обновления 60 Гц.",
+    "seller_attributes": {}
+  },
+  "expected": {
+    "category": "tvs",
+    "attributes": {
+      "brand": {
+        "value": "LG",
+        "status": "proposed"
+      },
+      "screen_size": {
+        "value": "43",
+        "unit": "inch",
+        "status": "proposed"
+      },
+      "resolution": {
+        "value": "4K UHD",
+        "status": "proposed"
+      },
+      "smart_tv": {
+        "value": "Да",
+        "status": "proposed"
+      },
+      "refresh_rate": {
+        "value": "60",
+        "unit": "Hz",
+        "status": "proposed"
+      }
+    },
+    "card_status": "ready"
+  }
+}

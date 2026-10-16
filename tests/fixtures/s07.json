@@ -1,0 +1,41 @@
+{
+  "note": "значения продавца не в каноне («8 Гб») → proposed с нормализацией",
+  "card": {
+    "product_id": "s07",
+    "title": "Смартфон POCO X6 Pro белый",
+    "description": "6.67 дюйма AMOLED, 120 Гц.",
+    "seller_attributes": {
+      "Оперативная память": "8 Гб",
+      "Встроенная память": "256 Гб"
+    }
+  },
+  "expected": {
+    "category": "smartphones",
+    "attributes": {
+      "brand": {
+        "value": "Poco",
+        "status": "proposed"
+      },
+      "color": {
+        "value": "Белый",
+        "status": "proposed"
+      },
+      "ram": {
+        "value": "8",
+        "unit": "GB",
+        "status": "proposed"
+      },
+      "storage": {
+        "value": "256",
+        "unit": "GB",
+        "status": "proposed"
+      },
+      "screen_size": {
+        "value": "6.67",
+        "unit": "inch",
+        "status": "proposed"
+      }
+    },
+    "card_status": "ready"
+  }
+}

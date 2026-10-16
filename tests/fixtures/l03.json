@@ -1,0 +1,46 @@
+{
+  "note": "MacBook: «Air 13» — не диагональ, диагональ 13,6 в описании",
+  "card": {
+    "product_id": "l03",
+    "title": "Apple MacBook Air 13 M2 8/256 ГБ серый космос",
+    "description": "Дисплей Liquid Retina 13,6 дюйма. macOS Sonoma.",
+    "seller_attributes": {}
+  },
+  "expected": {
+    "category": "laptops",
+    "attributes": {
+      "brand": {
+        "value": "Apple",
+        "status": "proposed"
+      },
+      "color": {
+        "value": "Серый",
+        "status": "proposed"
+      },
+      "ram": {
+        "value": "8",
+        "unit": "GB",
+        "status": "proposed"
+      },
+      "storage": {
+        "value": "256",
+        "unit": "GB",
+        "status": "proposed"
+      },
+      "screen_size": {
+        "value": "13.6",
+        "unit": "inch",
+        "status": "proposed"
+      },
+      "cpu": {
+        "value": "Apple M2",
+        "status": "proposed"
+      },
+      "os": {
+        "value": "macOS",
+        "status": "proposed"
+      }
+    },
+    "card_status": "ready"
+  }
+}

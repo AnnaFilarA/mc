@@ -1,0 +1,42 @@
+{
+  "note": "ловушка: 8 ГБ — видеопамять, ОЗУ 16 ГБ",
+  "card": {
+    "product_id": "l08",
+    "title": "Игровой ноутбук ASUS TUF Gaming F15",
+    "description": "Видеокарта RTX 4060 8 ГБ, оперативная память 16 ГБ DDR5, SSD 1 ТБ, экран 15.6 дюйма, Intel Core i7-13620H.",
+    "seller_attributes": {}
+  },
+  "expected": {
+    "category": "laptops",
+    "attributes": {
+      "brand": {
+        "value": "ASUS",
+        "status": "proposed"
+      },
+      "ram": {
+        "value": "16",
+        "unit": "GB",
+        "status": "proposed"
+      },
+      "storage": {
+        "value": "1024",
+        "unit": "GB",
+        "status": "proposed"
+      },
+      "storage_type": {
+        "value": "SSD",
+        "status": "proposed"
+      },
+      "screen_size": {
+        "value": "15.6",
+        "unit": "inch",
+        "status": "proposed"
+      },
+      "cpu": {
+        "value": "Intel Core i7",
+        "status": "proposed"
+      }
+    },
+    "card_status": "ready"
+  }
+}

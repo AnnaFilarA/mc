@@ -1,0 +1,20 @@
+# Общие атрибуты для карточек вне известных категорий (INTENT 7: бренд, цвет, память).
+# Черновик до EDA. Владелец после EDA — поток A.
+category: _common
+name_ru: Общие атрибуты
+keywords: []
+attributes:
+  - code: brand
+    name_ru: Бренд
+    type: enum
+    required: true
+    seller_keys: [brand, бренд, производитель, марка]
+    values: [Apple, Samsung, Xiaomi, Huawei, Honor, Realme, Poco, OnePlus, Google, Nokia, Tecno, Infinix,
+             Lenovo, ASUS, Acer, HP, Dell, MSI, Gigabyte, Microsoft, LG, Sony, Philips, TCL, Haier, Hisense,
+             JBL, Sennheiser, Bose, Marshall, Jabra, Audio-Technica]
+  - code: color
+    name_ru: Цвет
+    type: enum
+    required: true
+    seller_keys: [color, цвет, цвет корпуса]
+    values: [Черный, Белый, Серый, Серебристый, Синий, Голубой, Зеленый, Красный, Золотой, Розовый, Фиолетовый, Бежевый, Желтый]

@@ -1,0 +1,13 @@
+# Этап 3 — LLM. По умолчанию выключен (INTENT 7). Ключ только из переменной окружения LLM_API_KEY.
+enabled: false
+provider: null          # gigachat | yandexgpt | openai_compatible | null
+model: null             # например GigaChat-Lite, yandexgpt-lite
+base_url: null
+max_calls_per_run: 200
+max_status: low_confidence   # SPEC 3.5: статус LLM-значения максимум low_confidence
+context_chars: 200            # ±символов вокруг кандидата
+timeout_s: 20
+cache_path: data/cache/llm_cache.jsonl
+schema_bootstrap:
+  min_cards: 20               # INTENT 10, вопрос 8
+  model: null

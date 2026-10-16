@@ -1,0 +1,37 @@
+# Схема категории «Телевизоры». Черновик до EDA. Владелец после EDA — поток A.
+category: tvs
+name_ru: Телевизоры
+keywords: [телевизор, tv, телевизоры, smart tv, qled, oled]
+attributes:
+  - code: brand
+    name_ru: Бренд
+    type: enum
+    required: true
+    seller_keys: [brand, бренд, производитель, марка]
+    values: [Samsung, LG, Sony, Philips, TCL, Haier, Hisense, Xiaomi, Yandex, Sber, Toshiba]
+  - code: screen_size
+    name_ru: Диагональ экрана
+    type: number
+    unit: inch
+    required: true
+    seller_keys: [screen_size, диагональ, диагональ экрана]
+    range: [19.0, 100.0]
+  - code: resolution
+    name_ru: Разрешение
+    type: enum
+    required: true
+    seller_keys: [resolution, разрешение, разрешение экрана]
+    values: [HD, Full HD, 4K UHD, 8K]
+  - code: smart_tv
+    name_ru: Smart TV
+    type: enum
+    required: true
+    seller_keys: [smart_tv, smart tv, смарт тв]
+    values: [Да, Нет]
+  - code: refresh_rate
+    name_ru: Частота обновления
+    type: number
+    unit: Hz
+    required: false
+    seller_keys: [refresh_rate, частота обновления, частота обновления экрана]
+    values: [50, 60, 100, 120, 144]

@@ -1,0 +1,44 @@
+{
+  "note": "значения продавца в каноне → unchanged; ОЗУ нигде нет → missing",
+  "card": {
+    "product_id": "s02",
+    "title": "Apple iPhone 15 128 ГБ черный",
+    "description": "Дисплей 6.1\" Super Retina XDR. iOS 17.",
+    "seller_attributes": {
+      "Бренд": "Apple",
+      "Цвет": "Черный"
+    },
+    "category_hint": "smartphones"
+  },
+  "expected": {
+    "category": "smartphones",
+    "attributes": {
+      "brand": {
+        "value": "Apple",
+        "status": "unchanged"
+      },
+      "color": {
+        "value": "Черный",
+        "status": "unchanged"
+      },
+      "ram": {
+        "status": "missing"
+      },
+      "storage": {
+        "value": "128",
+        "unit": "GB",
+        "status": "proposed"
+      },
+      "screen_size": {
+        "value": "6.1",
+        "unit": "inch",
+        "status": "proposed"
+      },
+      "os": {
+        "value": "iOS",
+        "status": "proposed"
+      }
+    },
+    "card_status": "needs_seller"
+  }
+}

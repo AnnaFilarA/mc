@@ -1,0 +1,44 @@
+{
+  "note": "конфликт цвета: атрибут продавца ≠ описание",
+  "card": {
+    "product_id": "s03",
+    "title": "Xiaomi Redmi Note 13 6/128 Гб",
+    "description": "Корпус зелёного цвета, экран 6.67 дюйма, Android.",
+    "seller_attributes": {
+      "Цвет": "Черный",
+      "Бренд": "Xiaomi"
+    }
+  },
+  "expected": {
+    "category": "smartphones",
+    "attributes": {
+      "brand": {
+        "value": "Xiaomi",
+        "status": "unchanged"
+      },
+      "color": {
+        "status": "conflict"
+      },
+      "ram": {
+        "value": "6",
+        "unit": "GB",
+        "status": "proposed"
+      },
+      "storage": {
+        "value": "128",
+        "unit": "GB",
+        "status": "proposed"
+      },
+      "screen_size": {
+        "value": "6.67",
+        "unit": "inch",
+        "status": "proposed"
+      },
+      "os": {
+        "value": "Android",
+        "status": "proposed"
+      }
+    },
+    "card_status": "needs_seller"
+  }
+}

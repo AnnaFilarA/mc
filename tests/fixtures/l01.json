@@ -1,0 +1,50 @@
+{
+  "note": "«16 ГБ ОЗУ + 512 ГБ SSD»",
+  "card": {
+    "product_id": "l01",
+    "title": "Ноутбук ASUS Vivobook 15 X1504VA 15.6\" Intel Core i5-1335U 16 ГБ ОЗУ + 512 ГБ SSD",
+    "description": "Серебристый корпус, Windows 11 Home.",
+    "seller_attributes": {}
+  },
+  "expected": {
+    "category": "laptops",
+    "attributes": {
+      "brand": {
+        "value": "ASUS",
+        "status": "proposed"
+      },
+      "color": {
+        "value": "Серебристый",
+        "status": "proposed"
+      },
+      "ram": {
+        "value": "16",
+        "unit": "GB",
+        "status": "proposed"
+      },
+      "storage": {
+        "value": "512",
+        "unit": "GB",
+        "status": "proposed"
+      },
+      "storage_type": {
+        "value": "SSD",
+        "status": "proposed"
+      },
+      "screen_size": {
+        "value": "15.6",
+        "unit": "inch",
+        "status": "proposed"
+      },
+      "cpu": {
+        "value": "Intel Core i5",
+        "status": "proposed"
+      },
+      "os": {
+        "value": "Windows 11",
+        "status": "proposed"
+      }
+    },
+    "card_status": "ready"
+  }
+}

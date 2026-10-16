@@ -1,0 +1,48 @@
+{
+  "note": "диагональ без единицы («15.6 FHD»)",
+  "card": {
+    "product_id": "l04",
+    "title": "Ноутбук HP 15s-fq5000 Ryzen 5 7520U 8 ГБ 512 ГБ SSD 15.6 FHD",
+    "description": "Windows 11.",
+    "seller_attributes": {}
+  },
+  "expected": {
+    "category": "laptops",
+    "attributes": {
+      "brand": {
+        "value": "HP",
+        "status": "proposed"
+      },
+      "ram": {
+        "value": "8",
+        "unit": "GB",
+        "status": "proposed"
+      },
+      "storage": {
+        "value": "512",
+        "unit": "GB",
+        "status": "proposed"
+      },
+      "storage_type": {
+        "value": "SSD",
+        "status": "proposed"
+      },
+      "screen_size": {
+        "value": "15.6",
+        "unit": "inch",
+        "status": [
+          "proposed",
+          "low_confidence"
+        ]
+      },
+      "cpu": {
+        "value": "AMD Ryzen 5",
+        "status": "proposed"
+      },
+      "os": {
+        "value": "Windows 11",
+        "status": "proposed"
+      }
+    }
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "note": "12/1TB → 1024 GB",
+  "card": {
+    "product_id": "s08",
+    "title": "Samsung Galaxy S24 Ultra 12/1TB титановый серый",
+    "description": "Экран 6,8 дюйма Dynamic AMOLED 2X.",
+    "seller_attributes": {}
+  },
+  "expected": {
+    "category": "smartphones",
+    "attributes": {
+      "brand": {
+        "value": "Samsung",
+        "status": "proposed"
+      },
+      "color": {
+        "value": "Серый",
+        "status": "proposed"
+      },
+      "ram": {
+        "value": "12",
+        "unit": "GB",
+        "status": "proposed"
+      },
+      "storage": {
+        "value": "1024",
+        "unit": "GB",
+        "status": "proposed"
+      },
+      "screen_size": {
+        "value": "6.8",
+        "unit": "inch",
+        "status": "proposed"
+      }
+    },
+    "card_status": "ready"
+  }
+}
