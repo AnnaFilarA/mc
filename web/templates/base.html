@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}AttrGuard{% endblock %} · AttrGuard</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect width='16' height='16' rx='3' fill='%23E30611'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="/static/style.css">
+  <script src="https://unpkg.com/htmx.org@1.9.12" defer></script>
+</head>
+<body>
+<header class="topbar">
+  <div class="topbar-in">
+    <a class="logo" href="/"><span class="logo-mark">A</span>AttrGuard</a>
+    <nav class="nav">
+      {% if role == 'manager' %}
+        <a href="/manager" class="{{ 'on' if path == '/manager' or path.startswith('/manager/card') }}">Исключения</a>
+        <a href="/manager/categories" class="{{ 'on' if path.startswith('/manager/categories') }}">Новые категории</a>
+      {% elif role == 'seller' %}
+        <a href="/seller" class="{{ 'on' if path == '/seller' }}">Мои товары</a>
+        <a href="/seller/new" class="{{ 'on' if path == '/seller/new' }}">Новая карточка</a>
+        <a href="/seller/questions" class="{{ 'on' if path == '/seller/questions' }}">Вопросы каталога</a>
+      {% endif %}
+    </nav>
+    <div class="role-switch" aria-label="Переключатель роли">
+      <span class="muted">Роль:</span>
+      <a href="/role/manager" class="{{ 'on' if role == 'manager' }}">Менеджер</a>
+      <a href="/role/seller" class="{{ 'on' if role == 'seller' }}">Продавец</a>
+    </div>
+  </div>
+</header>
+<main class="page">
+  {% block content %}{% endblock %}
+</main>
+<footer class="foot">
+  AttrGuard · демо
+  {% if fallback_used %}<span class="muted"> · ядро извлечения ещё не подключено: значения и статусы взяты из эталонов (демо-режим)</span>{% endif %}
+</footer>
+</body>
+</html>

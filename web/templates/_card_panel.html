@@ -1,0 +1,65 @@
+{% import "_macros.html" as m %}
+<div id="card-panel" data-card-status="{{ v.card_status }}">
+  <div class="panel-head">
+    <span>Статус карточки: {{ m.cardchip(v.card_status) }}</span>
+    {% if v.request_state %}<span class="req">Запрос продавцу: {{ v.request_state }} · {{ v.request_at|fmt_dt }}</span>{% endif %}
+  </div>
+  {% if v.card_status == 'ready' %}
+  <div class="notice ok" id="card-ready">Все обязательные поля решены. Карточка убрана из списка исключений. <a href="/manager">К списку исключений</a></div>
+  {% endif %}
+  <div class="table-wrap">
+  <table class="tbl fields">
+    <thead><tr><th>Атрибут</th><th>Было</th><th>Предложено</th><th>Статус</th><th>Уверенность</th><th>Этап</th><th>Источник</th><th>Действия</th></tr></thead>
+    <tbody>
+    {% for a in v.attrs %}
+    <tr id="row-{{ a.code }}" class="{{ 'row-problem' if a.problem }}">
+      <td><b>{{ a.spec.name_ru }}</b>{% if a.spec.required %}<div class="muted small">обязательное</div>{% endif %}</td>
+      <td>{{ a.res.was or '—' }}</td>
+      <td class="val">{{ a.res.value|fmt_value(a.res.unit) }}</td>
+      <td>{{ m.chip(a.res.status.value) }}
+        {% if a.resolved_by %}<div class="small muted">решено: {{ ACTOR_LABELS[a.resolved_by] }}, {{ a.resolved_at|fmt_dt }}</div>
+        {% elif a.asked %}<div class="small muted">вопрос продавцу отправлен {{ a.asked_at|fmt_dt }}</div>{% endif %}</td>
+      <td>{{ a.res.confidence|pct }}</td>
+      <td>{{ STAGE_LABELS[a.res.stage] }}</td>
+      <td class="small">
+        {% if a.resolved_by %}{{ ACTOR_LABELS[a.resolved_by]|capitalize }}
+        {% elif a.res.evidence %}{{ SOURCE_LABELS[a.res.evidence.source] }}<div class="muted">«{{ a.res.evidence.text }}»</div>
+        {% else %}<span class="muted">нет фрагмента</span>{% endif %}
+      </td>
+      <td class="actions">
+        {% if not a.resolved_by %}
+          {% if a.base.value %}
+          <button class="btn primary small-btn" hx-post="/v1/feedback" hx-target="#card-panel" hx-swap="outerHTML"
+                  hx-vals='{{ dict(product_id=v.product_id, attribute=a.code, actor='manager', view='manager', action='accept') | tojson }}'>Принять</button>
+          {% endif %}
+        {% endif %}
+        <details class="fixer">
+          <summary class="btn small-btn">Исправить</summary>
+          <form hx-post="/v1/feedback" hx-target="#card-panel" hx-swap="outerHTML" class="inline-form">
+            <input type="hidden" name="product_id" value="{{ v.product_id }}">
+            <input type="hidden" name="attribute" value="{{ a.code }}">
+            <input type="hidden" name="action" value="fix">
+            <input type="hidden" name="actor" value="manager">
+            <input type="hidden" name="view" value="manager">
+            {% if a.spec.type == 'enum' and a.spec.values %}
+            <select name="value" required aria-label="Значение {{ a.spec.name_ru }}">
+              <option value="">— выберите —</option>
+              {% for o in a.spec.values %}<option value="{{ o }}" {{ 'selected' if o == a.res.value }}>{{ o }}</option>{% endfor %}
+            </select>
+            {% else %}
+            <input name="value" required value="{{ a.res.value or '' }}" placeholder="{{ a.spec.hint }}" aria-label="Значение {{ a.spec.name_ru }}">
+            {% endif %}
+            <button class="btn primary small-btn" type="submit">Сохранить</button>
+          </form>
+        </details>
+        {% if not a.resolved_by and not a.asked %}
+          <button class="btn small-btn" hx-post="/v1/feedback" hx-target="#card-panel" hx-swap="outerHTML"
+                  hx-vals='{{ dict(product_id=v.product_id, attribute=a.code, actor='manager', view='manager', action='ask_seller') | tojson }}'>Отправить вопрос продавцу</button>
+        {% endif %}
+      </td>
+    </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+  </div>
+</div>

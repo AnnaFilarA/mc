@@ -1,0 +1,34 @@
+<section class="qcard" id="q-{{ v.product_id }}">
+  <div class="qcard-head">
+    <b>{{ v.card.title or v.product_id }}</b>
+    <span class="chip cs-{{ v.card_status }}">{{ CARD_STATUS_LABELS[v.card_status] }}</span>
+  </div>
+  {% for a in v.questions %}
+  <div class="question" id="q-{{ v.product_id }}-{{ a.code }}">
+    <div class="q-text">{{ a.spec.name_ru }}: {{ a.question.text }}</div>
+    <div class="q-options">
+      {% for o in a.question.options %}
+      <button class="btn option" hx-post="/v1/feedback" hx-target="#q-{{ v.product_id }}" hx-swap="outerHTML"
+              hx-vals='{{ dict(product_id=v.product_id, attribute=a.code, action="seller_answer", actor="seller", view="seller_q", value=o) | tojson }}'>{{ o }}{% if a.spec.type == 'number' and a.spec.unit %} {{ UNIT_LABELS.get(a.spec.unit, a.spec.unit) }}{% endif %}</button>
+      {% endfor %}
+    </div>
+    <form class="inline-form" hx-post="/v1/feedback" hx-target="#q-{{ v.product_id }}" hx-swap="outerHTML">
+      <input type="hidden" name="product_id" value="{{ v.product_id }}">
+      <input type="hidden" name="attribute" value="{{ a.code }}">
+      <input type="hidden" name="action" value="seller_answer">
+      <input type="hidden" name="actor" value="seller">
+      <input type="hidden" name="view" value="seller_q">
+      <input name="value" required placeholder="Другое значение. {{ a.spec.hint }}" aria-label="Другое значение: {{ a.spec.name_ru }}">
+      <button class="btn small-btn" type="submit">Ответить</button>
+    </form>
+  </div>
+  {% endfor %}
+  {% for a in v.answered %}
+  <div class="question done">
+    <span class="chip cs-ready">Ответ отправлен</span>
+    {{ a.spec.name_ru }}: <b>{{ a.res.value|fmt_value(a.res.unit) }}</b>
+    <span class="muted small">{{ a.answered_at|fmt_dt }}</span>
+  </div>
+  {% endfor %}
+  {% if not v.questions %}<div class="notice ok">Все вопросы по этой карточке закрыты. Статус карточки: {{ CARD_STATUS_LABELS[v.card_status]|lower }}.</div>{% endif %}
+</section>

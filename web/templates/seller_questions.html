@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block title %}Вопросы каталога{% endblock %}
+{% block content %}
+<h1>Вопросы от каталога</h1>
+<p class="lead">Ответьте на вопросы — карточка пересчитается и попадёт в фильтры.</p>
+{% for v in views %}
+  {% include "_questions_card.html" %}
+{% else %}
+  <div class="notice ok" id="no-questions">Вопросов нет. Всё, что нужно каталогу, уже заполнено.</div>
+{% endfor %}
+{% endblock %}

@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block title %}Новые категории{% endblock %}
+{% block content %}
+<h1>Очередь новых категорий</h1>
+{% if saved %}<div class="notice ok">Черновик «{{ saved }}» сохранён.</div>{% endif %}
+{% if error %}<div class="notice err">Не сохранено: {{ error }}</div>{% endif %}
+
+<h2>Карточки без категории <span class="count">{{ queue|length }}</span></h2>
+{% if queue %}
+<ul class="plain" id="cat-queue">
+  {% for v in queue %}
+  <li><a href="/manager/card/{{ v.product_id }}">{{ v.card.title or v.product_id }}</a> <span class="muted small">· {{ v.product_id }}</span></li>
+  {% endfor %}
+</ul>
+{% else %}
+<p class="muted">Очередь пуста.</p>
+{% endif %}
+
+<h2>Черновики схем <span class="count">{{ drafts|length }}</span></h2>
+{% if drafts %}
+  {% for d in drafts %}
+  <article class="draft" id="draft-{{ d.id }}">
+    <div class="draft-head"><b>{{ d.id }}</b><span class="muted small"> · config/categories/{{ d.id }}.draft.yaml</span></div>
+    <pre class="yaml">{{ d.yaml }}</pre>
+    <div class="draft-actions">
+      <button class="btn primary" hx-post="/v1/categories/{{ d.id }}/approve" hx-target="#draft-{{ d.id }}" hx-swap="innerHTML">Утвердить</button>
+      <details class="fixer">
+        <summary class="btn">Править</summary>
+        <form method="post" action="/manager/categories/{{ d.id }}/draft">
+          <textarea name="yaml" rows="16" spellcheck="false" aria-label="YAML черновика {{ d.id }}">{{ d.yaml }}</textarea>
+          <button class="btn primary" type="submit">Сохранить черновик</button>
+        </form>
+      </details>
+    </div>
+  </article>
+  {% endfor %}
+{% else %}
+<p class="muted">Черновиков нет. Они появятся, когда сервис подготовит схему для новой категории.</p>
+{% endif %}
+{% endblock %}

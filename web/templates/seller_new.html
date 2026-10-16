@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block title %}Новая карточка{% endblock %}
+{% block content %}
+<h1>Новая карточка товара</h1>
+<p class="lead">Заполните данные как обычно. Мы подскажем недостающие характеристики, чтобы товар попал в фильтры.</p>
+<div class="split">
+  <form id="input-form" class="stack" hx-post="/seller/check" hx-target="#preview" hx-trigger="submit, input delay:1s">
+    <input type="hidden" name="product_id" value="{{ pid }}">
+    <label>Название
+      <input name="title" id="f-title" autocomplete="off" placeholder="Смартфон Samsung Galaxy A55 8/256GB синий">
+    </label>
+    <label>Описание
+      <textarea name="description" id="f-description" rows="5" placeholder="Экран 6,6 дюйма Super AMOLED, Android 14."></textarea>
+    </label>
+    <label>Характеристики
+      <textarea name="characteristics" id="f-characteristics" rows="5" placeholder="по одной в строке: ключ: значение&#10;Цвет: Синий"></textarea>
+    </label>
+    <div class="muted small">Формат строки: «ключ: значение». Проверка запускается сама через секунду после ввода.</div>
+    <button class="btn primary" type="submit" id="check-btn">Проверить</button>
+  </form>
+  <section aria-label="Предзаполнение">
+    <h2>Обязательные поля категории</h2>
+    <div id="preview"><p class="muted">Введите название товара, и здесь появятся поля с предзаполнением.</p></div>
+  </section>
+</div>
+{% endblock %}

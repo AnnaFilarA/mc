@@ -1,0 +1,44 @@
+{% if p is none %}
+<p class="muted">Введите название товара, и здесь появятся поля с предзаполнением.</p>
+{% else %}
+<div class="cat-line">Категория: <b>{{ p.v.category_name }}</b>
+  {% if p.v.category == 'unknown' %}<span class="muted small"> · карточка попадёт в очередь новых категорий, показаны общие поля</span>{% endif %}
+</div>
+<form id="fields-form" class="stack">
+  <input type="hidden" name="product_id" value="{{ p.card.product_id }}">
+  <input type="hidden" name="title" value="{{ p.card.title }}">
+  <input type="hidden" name="description" value="{{ p.card.description }}">
+  <input type="hidden" name="characteristics" value="{{ p.chars }}">
+  <input type="hidden" name="f_marker" value="1">
+  <div class="indicator" id="filters-indicator">
+    <div>Попадёт в <b>{{ p.filled }}</b> из <b>{{ p.total }}</b> фильтров</div>
+    <div class="bar"><span style="width: {{ (100 * p.filled / p.total) | round | int if p.total else 0 }}%"></span></div>
+  </div>
+  {% for r in p.rows %}
+  {% set a = r.a %}
+  <div class="field" data-attr="{{ a.code }}">
+    <div class="field-head">
+      <label for="f_{{ a.code }}">{{ a.spec.name_ru }}{% if a.spec.type == 'number' and a.spec.unit %}, {{ UNIT_LABELS.get(a.spec.unit, a.spec.unit) }}{% endif %}</label>
+      {% if r.overridden %}<span class="chip cs-ready">Указано вами</span>
+      {% elif r.value and not a.res.value %}<span class="chip st-unchanged">Из ваших характеристик</span>
+      {% else %}<span class="chip st-{{ a.res.status.value }}">{{ STATUS_LABELS[a.res.status.value] }}</span>{% endif %}
+    </div>
+    {% if a.spec.type == 'enum' and a.spec.values %}
+    <select id="f_{{ a.code }}" name="f_{{ a.code }}" hx-post="/seller/check" hx-trigger="change" hx-target="#preview">
+      <option value="">— выберите —</option>
+      {% if r.value and r.value not in r.options %}<option value="{{ r.value }}" selected>{{ r.value }} (как указано)</option>{% endif %}
+      {% for o in r.options %}<option value="{{ o }}" {{ 'selected' if o == r.value }}>{{ o }}</option>{% endfor %}
+    </select>
+    {% else %}
+    <input id="f_{{ a.code }}" name="f_{{ a.code }}" value="{{ r.value }}" list="dl_{{ a.code }}" placeholder="{{ a.spec.hint }}"
+           autocomplete="off" hx-post="/seller/check" hx-trigger="change" hx-target="#preview">
+    <datalist id="dl_{{ a.code }}">{% for o in r.options %}<option value="{{ o }}">{% endfor %}</datalist>
+    {% endif %}
+    <div class="hint">{{ a.spec.hint }}{% if a.res.evidence %} · найдено в тексте: «{{ a.res.evidence.text }}»{% endif %}</div>
+    {% if a.question and not r.value %}<div class="hint ask">Вопрос каталога: {{ a.question.text }}</div>{% endif %}
+  </div>
+  {% endfor %}
+  <button class="btn primary" type="button" id="save-btn" hx-post="/seller/save" hx-target="#save-result" hx-swap="innerHTML">Сохранить карточку</button>
+  <div id="save-result"></div>
+</form>
+{% endif %}
