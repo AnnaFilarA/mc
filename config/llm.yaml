@@ -1,13 +1,22 @@
-# Этап 3 — LLM. По умолчанию выключен (INTENT 7). Ключ только из переменной окружения LLM_API_KEY.
+# Этап 3 — LLM. По умолчанию выключен (INTENT 7). Ключ только из переменной окружения LLM_API_KEY (SPEC N8).
+# Включение: enabled: true + provider + model (+ base_url) и export LLM_API_KEY=... Нет ключа → NullLLM.
 enabled: false
+# openai_compatible — любой OpenAI-совместимый chat/completions (шлюз, vLLM/llama.cpp server с Qwen и т.д.), нужен base_url
+# gigachat          — тот же формат, base_url по умолчанию https://gigachat.devices.sberbank.ru/api/v1 (ключ = access token)
+# yandexgpt         — нативный API, нужен folder_id; model вида yandexgpt-lite
 provider: null          # gigachat | yandexgpt | openai_compatible | null
-model: null             # например GigaChat-Lite, yandexgpt-lite
-base_url: null
-max_calls_per_run: 200
-max_status: low_confidence   # SPEC 3.5: статус LLM-значения максимум low_confidence
-context_chars: 200            # ±символов вокруг кандидата
+model: null             # например GigaChat-Lite, yandexgpt-lite, Qwen2.5-7B-Instruct
+base_url: null          # openai_compatible: например http://localhost:8000/v1
+folder_id: null         # только yandexgpt (идентификатор каталога, не секрет)
+json_mode: null         # response_format=json_object; null = по умолчанию провайдера (gigachat — выкл.)
+temperature: 0
+max_tokens: 600
+max_calls_per_run: 200  # лимит реальных вызовов за прогон; исчерпан → поле остаётся low_confidence без вызова
+max_status: low_confidence   # SPEC 3.5: статус LLM-значения максимум low_confidence (применяет каскад)
+max_score: 0.7          # верхняя граница score кандидатов stage=llm; держать ниже порога proposed (thresholds.yaml)
+context_chars: 200      # ±символов вокруг evidence кандидатов
 timeout_s: 20
-cache_path: data/cache/llm_cache.jsonl
+cache_path: data/cache/llm_cache.jsonl   # ключ sha256(model + prompt), JSONL
 schema_bootstrap:
-  min_cards: 20               # INTENT 10, вопрос 8
-  model: null
+  min_cards: 20         # INTENT 10, вопрос 8
+  model: null           # модель уровнем выше для редкого вызова (SPEC 6.2); null = основная
