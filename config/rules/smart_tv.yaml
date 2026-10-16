@@ -1,0 +1,14 @@
+# Smart TV: платформа или слова «smart tv» → Да.
+_groups:
+  Да: [smart tv, smart-tv, smarttv, смарт тв, смарт-тв, webos, tizen, google tv, android tv, vidaa, яндекс тв, yandex tv, salute tv, салют тв, fire tv, roku tv]
+  Нет: [без smart tv, без смарт тв, не smart tv, без smart]
+_seller:
+  да: Да
+  есть: Да
+  yes: Да
+  "true": Да
+  smart: Да
+  нет: Нет
+  "no": Нет
+  "false": Нет
+  отсутствует: Нет

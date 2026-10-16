@@ -1,0 +1,7 @@
+# Разрешение ТВ. Голое «hd» слабее (поправка -0.1). Размеры «1366x768» — любой разделитель x/х/×.
+_groups:
+  4K UHD: [4k, 4к, uhd, ultra hd, ultrahd, 3840x2160, 2160p, 4k uhd, 4k ultra hd]
+  8K: [8k, 8к, 7680x4320, 4320p]
+  Full HD: [full hd, fullhd, fhd, 1920x1080, 1080p, полный hd]
+  HD: [hd ready, hd-ready, 1366x768, 1280x720, 720p]
+hd: [HD, -0.1]
