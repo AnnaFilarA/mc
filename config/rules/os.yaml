@@ -1,0 +1,12 @@
+# Операционные системы. «DOS»/«без ОС» → «Без ОС». Формат — шапка src/normalize.py.
+_groups:
+  Android: [android, андроид]
+  iOS: [ios, iphone os]
+  HarmonyOS: [harmonyos, harmony os]
+  macOS: [macos, mac os]
+  Windows 11: [windows 11, win 11, виндовс 11, windows11]
+  Windows 10: [windows 10, win 10, виндовс 10, windows10]
+  Linux: [linux, ubuntu, astra linux, линукс]
+  Без ОС: [dos, freedos, free dos, без ос, без операционной системы, no os, без предустановленной ос, without os]
+  webOS: [webos]
+  Tizen: [tizen]
