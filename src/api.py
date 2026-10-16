@@ -500,13 +500,34 @@ def health() -> dict:
 # --- API -------------------------------------------------------------------
 @router.post("/v1/extract", response_model=ExtractResponse)
 def v1_extract(card: Card, request: Request) -> ExtractResponse:
-    return _ctx(request).extract(card)
+    ctx = _ctx(request)
+    _register(ctx, card)
+    return ctx.extract(card)
 
 
 @router.post("/v1/extract/batch", response_model=list[ExtractResponse])
 def v1_extract_batch(cards: list[Card], request: Request) -> list[ExtractResponse]:
     ctx = _ctx(request)
+    for c in cards:
+        _register(ctx, c)
     return [ctx.extract(c) for c in cards]
+
+
+def _register(ctx: Ctx, card: Card) -> None:
+    """Карточка из API попадает в хранилище: на неё можно дать feedback, менеджер видит её в исключениях."""
+    row = ctx.storage.get_card(card.product_id)
+    if row is None:
+        ctx.storage.save_card(card, owner="api", replace=False)
+    elif row[0] != card:
+        ctx.storage.save_card(card, owner=row[1], replace=True)
+
+
+def _canon_answer(value: str | None, spec: AttrSpec) -> str | None:
+    """Ответ «8 GB» / «6,7» для числового атрибута → канон «8» / «6.7» (единица — в unit)."""
+    if value is None or spec.type != "number":
+        return value
+    m = re.match(r"\s*(\d+(?:[.,]\d+)?)", value)
+    return m.group(1).replace(",", ".") if m else value
 
 
 @router.post("/v1/feedback")
@@ -536,6 +557,8 @@ async def v1_feedback(request: Request):
         raise HTTPException(422, detail="seller_answer возможен только с actor=seller")
     if fb.action in ("accept", "ask_seller"):
         value = av.base.value if fb.action == "accept" else None
+    else:
+        value = _canon_answer(value, av.spec)
     row = ctx.storage.add_feedback(
         fb.product_id, fb.attribute, fb.action, value, fb.actor,
         extra={"category": view.category, "text_hash": view.base.text_hash, "was": av.base.was,

@@ -9,7 +9,7 @@
     <div class="q-options">
       {% for o in a.question.options %}
       <button class="btn option" hx-post="/v1/feedback" hx-target="#q-{{ v.product_id }}" hx-swap="outerHTML"
-              hx-vals='{{ dict(product_id=v.product_id, attribute=a.code, action="seller_answer", actor="seller", view="seller_q", value=o) | tojson }}'>{{ o }}{% if a.spec.type == 'number' and a.spec.unit %} {{ UNIT_LABELS.get(a.spec.unit, a.spec.unit) }}{% endif %}</button>
+              hx-vals='{{ dict(product_id=v.product_id, attribute=a.code, action="seller_answer", actor="seller", view="seller_q", value=o) | tojson }}'>{{ o }}{% if a.spec.type == 'number' and a.spec.unit and (o|string).replace('.', '', 1).isdigit() %} {{ UNIT_LABELS.get(a.spec.unit, a.spec.unit) }}{% endif %}</button>
       {% endfor %}
     </div>
     <form class="inline-form" hx-post="/v1/feedback" hx-target="#q-{{ v.product_id }}" hx-swap="outerHTML">

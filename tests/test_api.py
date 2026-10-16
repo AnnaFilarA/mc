@@ -257,3 +257,17 @@ def test_fallback_never_proposes_without_evidence(tmp_path):
         for r in ctx.fallback_extract(card).attributes:
             if r.status in (Status.proposed, Status.unchanged):
                 assert evidence_is_valid(card, r.evidence)
+
+
+def test_feedback_on_card_from_extract_api(env):
+    """Интеграция: карточка, пришедшая через /v1/extract, принимает feedback; числовой ответ — в каноне."""
+    card = {"product_id": "api1", "title": "Ноутбук Acer Aspire 7 16GB/512GB i5", "description": "Экран 15.6 дюйма.",
+            "seller_attributes": {"Оперативная память": "8 ГБ"}}
+    ram = next(a for a in env.post("/v1/extract", json=card).json()["attributes"] if a["attribute"] == "ram")
+    assert ram["status"] == "conflict" and "8 GB" in ram["question_to_seller"]["options"]
+    r = env.post("/v1/feedback", json={"product_id": "api1", "attribute": "ram", "action": "seller_answer",
+                                       "value": "16 GB", "actor": "seller"})
+    assert r.status_code == 200
+    rec = json.loads(env.fb_path.read_text(encoding="utf-8").splitlines()[-1])
+    assert rec["value"] == "16"
+    assert any(v.card.product_id == "api1" for v in env.ctx.views())

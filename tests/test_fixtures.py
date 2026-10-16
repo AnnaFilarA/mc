@@ -1,4 +1,4 @@
-"""Каскад на эталонных карточках (SPEC N6). Снимает xfail поток B, когда ядро готово."""
+"""Каскад на эталонных карточках (SPEC N6)."""
 import pytest
 
 from src.contracts import Card, Status
@@ -13,7 +13,6 @@ def _run(card_dict):
     return extract(Card.model_validate(card_dict))
 
 
-@pytest.mark.xfail(raises=NotImplementedError, reason="ядро (поток B) ещё не реализовано", strict=False)
 @pytest.mark.parametrize("fx", FIXTURES, ids=IDS)
 def test_fixture(fx):
     resp = _run(fx["card"])

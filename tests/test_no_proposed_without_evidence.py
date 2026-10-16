@@ -5,7 +5,6 @@ from src.contracts import Card, Status, evidence_is_valid
 from tests.conftest import load_fixtures
 
 
-@pytest.mark.xfail(raises=NotImplementedError, reason="ядро (поток B) ещё не реализовано", strict=False)
 def test_no_proposed_without_evidence():
     from src.cascade import extract
     for fx in load_fixtures():
