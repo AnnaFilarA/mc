@@ -22,7 +22,7 @@ python -m pytest -q
 ### Google Colab
 
 ```python
-!git clone -b claude/wonderful-ride-zyd2wc https://github.com/annafilara/mc.git attrguard
+!git clone -b claude/wonderful-ride-zyd2wc https://github.com/AnnaFilarA/mc.git attrguard
 %cd attrguard
 !pip install -q -r requirements.txt
 # датасет кейса: либо с примонтированного Drive …
