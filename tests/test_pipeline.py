@@ -78,3 +78,10 @@ def test_write_predictions_roundtrip(tmp_path):
     write_predictions([r], str(tmp_path / "nested" / "dir"))
     back = ExtractResponse.model_validate_json((tmp_path / "nested" / "dir" / "predictions.jsonl").read_text(encoding="utf-8"))
     assert back == r
+
+
+def test_unknown_category_goes_to_queue(tmp_path):
+    from src.schema_bootstrap import NewCategoryQueue
+    q = tmp_path / "queue.jsonl"
+    assert main(["--input", str(FIXTURES), "--output", str(tmp_path / "out"), "--new-category-queue", str(q)]) == 0
+    assert NewCategoryQueue(q).count("unknown") == 1   # u01 — робот-пылесос

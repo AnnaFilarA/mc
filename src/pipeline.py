@@ -109,11 +109,26 @@ def _p95(values: list[float]) -> float:
     return s[min(len(s) - 1, int(round(0.95 * (len(s) - 1))))]
 
 
+def enqueue_unknown(cards: list[Card], responses: list[ExtractResponse], queue_path: str) -> int:
+    """Карточки неизвестной категории → очередь schema_bootstrap; ключ — category_hint или «unknown»."""
+    from src.prepare import UNKNOWN_CATEGORY
+    from src.schema_bootstrap import NewCategoryQueue
+    queue, n = NewCategoryQueue(queue_path), 0
+    for card, resp in zip(cards, responses):
+        if resp.category == UNKNOWN_CATEGORY:
+            queue.add(card.category_hint or UNKNOWN_CATEGORY, card)
+            n += 1
+    return n
+
+
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description="AttrGuard: пакетное извлечение характеристик")
     parser.add_argument("--input", required=True)
     parser.add_argument("--output", default="outputs/")
     parser.add_argument("--config", default="rules", choices=["rules", "rules_ml", "full"])
+    parser.add_argument("--new-category-queue", default=None,
+                        help="куда складывать карточки неизвестной категории (INTENT 4.2), "
+                             "например data/new_category_queue.jsonl; по умолчанию не пишем")
     args = parser.parse_args(argv)
 
     cards = load_cards(args.input)
@@ -121,6 +136,9 @@ def main(argv: list[str] | None = None) -> int:
     responses, times = run_cards(cards, args.config)
     total = time.perf_counter() - t0
     write_predictions(responses, args.output)
+    if args.new_category_queue:
+        queued = enqueue_unknown(cards, responses, args.new_category_queue)
+        print(f"В очередь «новая категория»: {queued} карточек → {args.new_category_queue}")
 
     statuses = Counter(a.status.value for r in responses for a in r.attributes)
     card_statuses = Counter(r.card_status for r in responses)
